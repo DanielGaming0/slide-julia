@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Padre Antônio Vieira - Apresentação Profissional</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* RESET & BASE FULLSCREEN */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #0b132b;
+      color: #f1f5f9;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* DECK CONTAINER TELA CHEIA */
+    .slide-deck {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle at 50% 50%, #1c2541 0%, #0b132b 100%);
+      overflow: hidden;
+    }
+
+    /* SLIDES (SEÇÕES) */
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      padding: clamp(30px, 5vh, 60px) clamp(30px, 7vw, 100px) 90px clamp(30px, 7vw, 100px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.97) translateY(10px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                  visibility 0.6s;
+      z-index: 1;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1) translateY(0);
+      z-index: 2;
+    }
+
+    /* ÍCONES FLUTUANTES NO FUNDO */
+    .floating-icon {
+      position: absolute;
+      color: #c5a059;
+      opacity: 0.05;
+      pointer-events: none;
+      user-select: none;
+      animation: floatMotion 9s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatMotion {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-18px) rotate(4deg); }
+      100% { transform: translateY(0px) rotate(-2deg); }
+    }
+
+    .pos-1 { top: 8%; right: 7%; font-size: clamp(6rem, 14vw, 13rem); animation-delay: 0s; }
+    .pos-2 { bottom: 12%; left: 5%; font-size: clamp(5rem, 12vw, 11rem); animation-delay: 2s; }
+    .pos-3 { top: 12%; left: 8%; font-size: clamp(4rem, 9vw, 8rem); opacity: 0.04; animation-delay: 4s; }
+    .pos-4 { bottom: 16%; right: 8%; font-size: clamp(5rem, 11vw, 10rem); opacity: 0.04; animation-delay: 1s; }
+
+    /* ELEMENTOS TIPOGRÁFICOS */
+    .tag {
+      display: inline-block;
+      font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #c5a059;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+      color: #ffffff;
+      line-height: 1.15;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      margin-bottom: 22px;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: clamp(0.95rem, 1.6vw, 1.2rem);
+      line-height: 1.65;
+      color: #cbd5e1;
+      max-width: 950px;
+      margin-bottom: 16px;
+      font-weight: 300;
+    }
+
+    strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* SLIDE 1 (CAPA) */
+    .slide-cover {
+      text-align: center;
+      align-items: center;
+    }
+
+    .slide-cover h1 {
+      background: linear-gradient(135deg, #ffffff 30%, #c5a059 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+      color: #94a3b8;
+      margin-bottom: 40px;
+      font-style: italic;
+      max-width: 800px;
+    }
+
+    .representatives-box {
+      padding: 18px 35px;
+      border-top: 1px solid rgba(197, 160, 89, 0.3);
+      border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 4px;
+    }
+
+    .representatives-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #c5a059;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .representatives-names {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: clamp(0.85rem, 1.3vw, 1.05rem);
+      color: #f8fafc;
+      font-weight: 500;
+    }
+
+    /* CARDS & GRIDS */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 1000px;
+      margin-top: 10px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-left: 4px solid #c5a059;
+      padding: 22px;
+      border-radius: 8px;
+      backdrop-filter: blur(4px);
+    }
+
+    .card h3 {
+      font-size: clamp(1rem, 1.5vw, 1.25rem);
+      color: #ffffff;
+      margin-bottom: 8px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .card p {
+      font-size: clamp(0.85rem, 1.2vw, 1rem);
+      margin-bottom: 0;
+      color: #94a3b8;
+    }
+
+    /* BARRA DE NAVEGAÇÃO INFERIOR */
+    .nav-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100vw;
+      height: 70px;
+      padding: 0 clamp(30px, 7vw, 100px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(11, 19, 43, 0.85);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      z-index: 100;
+    }
+
+    .counter {
+      font-size: clamp(0.8rem, 1.2vw, 0.95rem);
+      color: #94a3b8;
+      letter-spacing: 2px;
+      font-weight: 500;
+    }
+
+    .counter span {
+      color: #c5a059;
+      font-weight: 700;
+    }
+
+    .arrows-container {
+      display: flex;
+      gap: 16px;
+    }
+
+    .arrow-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(197, 160, 89, 0.4);
+      color: #ffffff;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+    }
+
+    .arrow-btn:hover:not(:disabled) {
+      background: #c5a059;
+      color: #0b132b;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(197, 160, 89, 0.3);
+    }
+
+    .arrow-btn:disabled {
+      opacity: 0.2;
+      cursor: not-allowed;
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* AVISO PARA GIRO DE TELA EM CELULARES */
+    .rotate-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #0b132b;
+      z-index: 9999;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .rotate-overlay i {
+      font-size: 3.5rem;
+      color: #c5a059;
+      margin-bottom: 20px;
+      animation: rotatePhone 2.5s infinite ease-in-out;
+    }
+
+    @keyframes rotatePhone {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(-90deg); }
+    }
+
+    @media (max-width: 768px) and (orientation: portrait) {
+      .rotate-overlay {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="rotate-overlay">
+    <i class="fa-solid fa-mobile-screen-button"></i>
+    <h2>Gire o seu celular</h2>
+    <p>Para uma melhor experiência de apresentação, utilize o dispositivo na horizontal (modo paisagem).</p>
+  </div>
+
+  <div class="slide-deck">
+
+    <section class="slide slide-cover active">
+      <i class="fa-solid fa-book-bible floating-icon pos-1"></i>
+      <i class="fa-solid fa-cross floating-icon pos-2"></i>
+      <i class="fa-solid fa-feather-pointed floating-icon pos-3"></i>
+      <i class="fa-solid fa-scroll floating-icon pos-4"></i>
+      
+      <span class="tag">Apresentação Histórica e Literária</span>
+      <h1>Padre Antônio Vieira</h1>
+      <p class="subtitle">A Vida, a Obra e a Diplomacia do "Imperador da Língua Portuguesa"</p>
+      
+      <div class="representatives-box">
+        <div class="representatives-label">Equipe de Representantes</div>
+        <div class="representatives-names">
+          <span>Ana Beatriz</span> •
+          <span>Julia</span> •
+          <span>Valquíria</span> •
+          <span>Josivania</span> •
+          <span>Giovana</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <i class="fa-solid fa-feather-pointed floating-icon pos-1"></i>
+      <i class="fa-solid fa-landmark floating-icon pos-2"></i>
+      <i class="fa-solid fa-hands-praying floating-icon pos-4"></i>
+
+      <span class="tag">02 / Visão Geral</span>
+      <h2>Quem foi Padre Antônio Vieira?</h2>
+      <p>Padre Antônio Vieira (1608–1697) foi uma das figuras mais extraordinárias e influentes do Império Português e do Brasil Colonial durante o século XVII.</p>
+      <p>Religioso da <strong>Companhia de Jesus</strong>, destacou-se como escritor barroco, filósofo, diplomata de estado e defensor intransigente dos direitos humanos, especialmente dos povos indígenas e perseguidos políticos.</p>
+    </section>
+
+    <section class="slide">
+      <i class="fa-solid fa-compass floating-icon pos-1"></i>
+      <i class="fa-solid fa-map-location-dot floating-icon pos-2"></i>
+      <i class="fa-solid fa-anchor floating-icon pos-3"></i>
+
+      <span class="tag">03 / Origens e Nascimento</span>
+      <h2>Nascimento na Metrópole</h2>
+      <p>Antônio Vieira nasceu no dia <strong>6 de fevereiro de 1608</strong>, na cidade de <strong>Lisboa, Portugal</strong>, na freguesia da Sé.</p>
+      <p>Nasceu em um contexto histórico marcado pela União Ibérica (período em que as coroas de Portugal e Espanha estavam unificadas), cenário que mais tarde exigiria dele intensa atuação política e diplomática na Europa.</p>
+    </section>
+
+    <section class="slide">
+      <i class="fa-solid fa-users floating-icon pos-1"></i>
+      <i class="fa-solid fa-house-chimney floating-icon pos-2"></i>
+      <i class="fa-solid fa-signature floating-icon pos-4"></i>
+
+      <span class="tag">04 / Origem Familiar</span>
+      <h2>Os Pais e a Estrutura Familiar</h2>
+      <p>Cresceu em uma família da pequena burocracia estatal, cujos valores de instrução e serviço régio moldaram seus primeiros anos:</p>
+      <div class="cards-grid">
+        <div class="card">
+          <h3>Cristóvão Vieira Ravasco (Pai)</h3>
+          <p>Trabalhava como escrivão da devassa no Tribunal da Relação. Sua nomeação para exercer funções administrativas no Brasil motivou a transferência de toda a família.</p>
+        </div>
+        <div class="card">
+          <h3>D. Maria de Azevedo (Mãe)</h3>
+          <p>Mulher de origens modestas. Historiadores indicam descendência de cristãos-novos e mestiços na linha materna, o que influenciou a sensibilidade de Vieira contra preconceitos.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <i class="fa-solid fa-ship floating-icon pos-1"></i>
+      <i class="fa-solid fa-water floating-icon pos-2"></i>
+      <i class="fa-solid fa-sun floating-icon pos-3"></i>
+
+      <span class="tag">05 / A Travessia</span>
+      <h2>A Chegada ao Brasil Colonial (1614)</h2>
+      <p>Em <strong>1614</strong>, com apenas 6 anos de idade, Vieira realizou a travessia do Oceano Atlântico com seus pais rumo a <strong>Salvador, na Bahia</strong>, que na época era a capital e o coração econômico da colônia.</p>
+      <p>Essa mudança aproximou Vieira da realidade colonial, onde presenciou de perto a exploração dos povos originários e o tráfico de escravizados, moldando suas futuras lutas sociais.</p>
+    </section>
+
+    <section class="slide">
+      <i class="fa-solid fa-graduation-cap floating-icon pos-1"></i>
+      <i class="fa-solid fa-lightbulb floating-icon pos-2"></i>
+      <i class="fa-solid fa-brain floating-icon pos-4"></i>
+
+      <span class="tag">06 / Juventude</span>
+      <h2>O Colégio Jesuíta e o "Estalo"</h2>
+      <p>Foi matriculado no prestigiado Colégio dos Jesuítas em Salvador. Inicialmente, apresentava grandes dificuldades de aprendizagem e retenção de memória.</p>
+      <p>Segundo relatos históricos e autobiográficos, aos 13 anos sofreu uma marcante experiência espiritual e intelectual conhecida como o <strong>"estalo de Vieira"</strong>, após a qual desenvolveu uma memória prodigiosa e uma capacidade oratória sem precedentes.</p>
+    </section>
+
+    <section class="slide">
+      <i class="fa-solid fa-cross floating-icon pos-1"></i>
+      <i class="fa-solid fa-church floating-icon pos-2"></i>
+      <i class="fa-solid fa-book-open-reader floating-icon pos-3"></i>
+
+      <span class="tag">07 / Vocação Religiosa</span>
+      <h2>Ingresso na Ordem e Sacerdócio</h2>
+      <p>Em 1623, aos 15 anos, ingressou como noviço na <strong>Companhia de Jesus</strong>. Foi ordenado padre em Salvador no ano de 1634, aos 26 anos.</p>
+      <p>Ainda jovem, chamou a atenção dos superiores ao redigir as <em>Cartas Ânuas</em> (relatórios enviados a Roma) e por ministrar aulas de Retórica com brilhantismo singular.</p>
+    </section>
+
+    <section class="slide">
+      <i class="fa-solid fa-crown floating-icon pos-1"></i>
+      <i class="fa-solid fa-building-columns floating-icon pos-2"></i>
+      <i class="fa-solid fa-handshake-simple floating-icon pos-4"></i>
+
+      <span class="tag">08 / Atuação Europeia</span>
+      <h2>O Diplomata e Conselheiro do Rei</h2>
+      <p>Após a Restauração da Independência de Portugal (1640), Vieira retornou à Europa e tornou-se amigo e conselheiro pessoal do rei <strong>D. João IV</strong>.</p>
+      <p>Atuou como embaixador em missões estratégicas em Paris, Haia e Roma, defendendo a criação de companhias de comércio e a proteção aos judeus/cristãos-novos para financiar o reino português.</p>
+    </section>
+
+    <section class="slide">
+      <i class="fa-solid fa-scroll floating-icon pos-1"></i>
+      <i class="fa-solid fa-pen-nib floating-icon pos-2"></i>
+      <i class="fa-solid fa-comments floating-icon pos-3"></i>
+
+      <span class="tag">09 / Obras Primas</span>
+      <h2>Genialidade na Oratória Barroca</h2>
+      <p>Vieira é o maior expoente do estilo <strong>Conceptista</strong> — caracterizado pelo jogo de conceitos, pela argumentação lógica perfeita e pela profunda crítica social e política.</p>
+      <div class="cards-grid">
+        <div class="card">
+          <h3>Sermão da Sexagésima (1655)</h3>
+          <p>Sua obra-prima sobre a arte de pregar. Critica duramente os oradores da época que usavam palavras bonitas, mas não transformavam as ações da sociedade.</p>
+        </div>
+        <div class="card">
+          <h3>Sermão de Stº Antônio aos Peixes</h3>
+          <p>Discurso alegórico pregado no Maranhão. Utiliza os peixes para satirizar a ganância, a prepotência e a corrupção dos colonos portugueses.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <i class="fa-solid fa-scale-balanced floating-icon pos-1"></i>
+      <i class="fa-solid fa-gavel floating-icon pos-2"></i>
+      <i class="fa-solid fa-shield-halved floating-icon pos-4"></i>
+
+      <span class="tag">10 / Lutas e Conflitos</span>
+      <h2>Defesa dos Indígenas e Prisão</h2>
+      <p>De volta ao Brasil, combateu a escravização dos povos indígenas no Maranhão e Grão-Pará, o que provocou a revolta dos colonos e sua posterior expulsão da região.</p>
+      <p>Devido às suas ideias progressistas e escritos messiânicos (o <em>Quinto Império</em>), foi perseguido e <strong>preso pela Inquisição</strong> entre 1665 e 1667, sendo posteriormente reabilitado pelo Papa Clemente X em Roma.</p>
+    </section>
+
+    <section class="slide">
+      <i class="fa-solid fa-monument floating-icon pos-1"></i>
+      <i class="fa-solid fa-book-bookmark floating-icon pos-2"></i>
+      <i class="fa-solid fa-ribbon floating-icon pos-3"></i>
+      <i class="fa-solid fa-quote-right floating-icon pos-4"></i>
+
+      <span class="tag">11 / Legado Etérno</span>
+      <h2>Os Últimos Anos e a Imortalidade</h2>
+      <p>Em 1681, já idoso e com a visão debilitada, retornou definitivamente à Bahia, onde dedicou seus últimos anos à revisão e publicação de seus mais de 200 sermões e centenas de cartas.</p>
+      <p>Faleceu em <strong>Salvador no dia 18 de julho de 1697</strong>, aos 89 anos. O poeta Fernando Pessoa imortalizou seu nome ao defini-lo como <em>"o Imperador da Língua Portuguesa"</em>.</p>
+    </section>
+
+    <div class="nav-bar">
+      <div class="counter">SLIDE <span id="current-index">01</span> / 11</div>
+      <div class="arrows-container">
+        <button class="arrow-btn" id="btn-prev" aria-label="Voltar Slide"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="arrow-btn" id="btn-next" aria-label="Avançar Slide"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const slides = document.querySelectorAll('.slide');
+      const btnPrev = document.getElementById('btn-prev');
+      const btnNext = document.getElementById('btn-next');
+      const currentIndexText = document.getElementById('current-index');
+      
+      let currentIdx = 0;
+      const totalSlides = slides.length;
+
+      function updateSlideState() {
+        slides.forEach((slide, idx) => {
+          if (idx === currentIdx) {
+            slide.classList.add('active');
+          } else {
+            slide.classList.remove('active');
+          }
+        });
+
+        // Formatação com zero à esquerda
+        currentIndexText.textContent = String(currentIdx + 1).padStart(2, '0');
+        
+        btnPrev.disabled = currentIdx === 0;
+        btnNext.disabled = currentIdx === totalSlides - 1;
+      }
+
+      btnNext.addEventListener('click', () => {
+        if (currentIdx < totalSlides - 1) {
+          currentIdx++;
+          updateSlideState();
+        }
+      });
+
+      btnPrev.addEventListener('click', () => {
+        if (currentIdx > 0) {
+          currentIdx--;
+          updateSlideState();
+        }
+      });
+
+      // Navegação por Teclado e Suporte a Touch
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+          if (currentIdx < totalSlides - 1) {
+            currentIdx++;
+            updateSlideState();
+          }
+        } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+          if (currentIdx > 0) {
+            currentIdx--;
+            updateSlideState();
+          }
+        }
+      });
+
+      // Inicializar
+      updateSlideState();
+    });
+  </script>
+</body>
+</html>
